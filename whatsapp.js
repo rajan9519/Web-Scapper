@@ -14,9 +14,16 @@ const scrap = async () => {
   var name = "Didi";
   await page.type("._2S1VP", name);
   await page.keyboard.press("Enter");
-  /*await page.evaluate(()=> {
-      document.querySelectorAll("._2S1VP")[1].setAttribute('class','msg');
-  })*/
+  await page.evaluate(() => {
+    document.querySelectorAll("._2S1VP")[1].setAttribute("class", "msg");
+  });
+
+  for (let i = 0; i < 10; i++) {
+    await page.type(".msg", "This is test message , typing typing", {
+      delay: 100,
+    });
+    await page.keyboard.press("Enter");
+  }
   return "success";
 };
 scrap().then((value) => {
