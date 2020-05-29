@@ -8,7 +8,9 @@ const scrap = async () => {
   });
   const page = await browser.newPage();
   await page.goto("https://web.whatsapp.com/");
-  await page.waitFor(15000);
+  await page.waitForSelector("._2S1VP", {
+    visible: true,
+  });
   var name = "Didi";
   await page.type("._2S1VP", name);
   await page.keyboard.press("Enter");
